@@ -18,5 +18,6 @@ Depends:
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    covr
 VignetteBuilder: knitr
