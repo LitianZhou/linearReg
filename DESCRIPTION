@@ -1,0 +1,22 @@
+Package: linearReg
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: zlt
+Maintainer: zlt <zlt@umich.edu>
+Description: as title
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    Rcpp (>= 1.0.2)
+LinkingTo: Rcpp
+RoxygenNote: 6.1.1
+Depends: 
+    stats
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 2.1.0)
+VignetteBuilder: knitr

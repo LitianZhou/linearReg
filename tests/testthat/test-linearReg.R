@@ -1,0 +1,11 @@
+test_that("coefficients are the same as lm", {
+  set.seed(77)
+  X1 = rnorm(1000)
+  X2 = rnorm(1000)
+  Y = 2*X1+ 3*X2 + rnorm(1000,sd=2)
+  model_lm = lm(Y~X1+X2)
+  X= cbind(X1,X2)
+  model_me = linearReg(Y,X)
+  all_equal = all.equal(model_lm$coefficients,model_me$coefficients, check.names=FALSE)
+  expect_equal(all_equal, TRUE)
+})

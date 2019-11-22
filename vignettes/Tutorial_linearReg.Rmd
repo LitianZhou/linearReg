@@ -1,0 +1,67 @@
+---
+title: "Tutorial_linearReg"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial_linearReg}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(linearReg)
+```
+
+## Description
+This function is used to build linear models. It can be used to carry out both simple linear regression (SLR) and multiple linear regression (MLR). The companion function summary_linearReg is used to print out the coefficients and other statistic.
+
+### SLR demo
+To use the function, you need to do prepare two data sets. One for the outcome data (Y), other for the predictor data(X). Both data sets can be vectors or a matrices. For instance:
+```{r SLR demo}
+Y = c(2,3,4,5)
+X = c(1.1, 2.2, 2.9, 3.9)
+
+model1 = linearReg(Y,X)
+```
+
+We can check the result of above SLR model using summary_linearReg():
+```{r}
+summary_linearReg(model1)
+```
+
+### MLR demo
+We can also use matrices to build a MLR model. Note that the function can not build multi-covariate model, i.e. Y matrix can not have more than 1 colomn. For instance:
+```{r MLR demo1}
+set.seed(7)
+X = matrix(rnorm(200), 100, 2)
+Y = matrix((X[,1]+3 * X[,2] + rnorm(200,sd=2)), 100, 1)
+
+model1 = linearReg(Y,X)
+```
+Similarly, we use summary_linearReg to print out the model:
+```{r}
+summary_linearReg(model1)
+```
+
+If you want to combine predictors from different X matrices, use cbind to combine them into one X matrix first. User are responsible to check each colomn of X are orthogonal. For instance:
+```{r MLR demo2}
+set.seed(7)
+X1 = rnorm(100)
+X2 = rnorm(100)
+Y = X1+ 3*X2 + rnorm(100,sd=2)
+
+X= cbind(X1,X2)
+model2 = linearReg(Y,X)
+
+summary_linearReg(model2)
+```
+
+
+
+

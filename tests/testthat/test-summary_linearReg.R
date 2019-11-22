@@ -1,0 +1,10 @@
+test_that("F_statistic equal", {
+  set.seed(777)
+  X1 = rnorm(1000)
+  X2 = rnorm(1000)
+  Y = 2*X1+ 3*X2 + rnorm(1000,sd=2)
+  model_lm = lm(Y~X1+X2)
+  X= cbind(X1,X2)
+  model_me = linearReg(Y,X)
+  expect_equal(unname(summary(model_lm)$fstatistic[1]), model_me$F_statistic)
+})
