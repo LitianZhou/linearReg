@@ -11,7 +11,6 @@
 #'
 #'@export
 linearReg = function(Y, X, has_intercept = TRUE) {
-
   # convert vector to matrix
   if(is.null(attributes(Y))) {
     attr(Y, "dim") = c(length(Y),1)
@@ -21,14 +20,13 @@ linearReg = function(Y, X, has_intercept = TRUE) {
   }
 
   # exclude all obs with NAs
-  if(sum(Y[is.na(Y)]) > 0 || sum(X[is.na(X)]) > 0) {
+  if(sum(is.na(Y)) > 0) {
     X = X[-which(is.na(Y)),, drop=FALSE]
     Y = Y[-which(is.na(Y)),, drop=FALSE]
-
+  } else if(sum(is.na(X)) > 0) {
     Y = Y[-unique(which(is.na(X),arr.ind = TRUE)[1]),, drop=FALSE]
     X = X[-unique(which(is.na(X),arr.ind = TRUE)[1]),, drop=FALSE]
   }
-
   # dimension check
   if(nrow(Y) != nrow(X)) {
     stop("Number of the outcomes and observations do not match.")

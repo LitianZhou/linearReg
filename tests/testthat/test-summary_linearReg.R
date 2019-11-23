@@ -6,5 +6,5 @@ test_that("F_statistic equal", {
   model_lm = lm(Y~X1+X2)
   X= cbind(X1,X2)
   model_me = linearReg(Y,X)
-  expect_equal(unname(summary(model_lm)$fstatistic[1]), model_me$F_statistic)
+  expect_equal(unname(summary(model_lm)$fstatistic[1]), summary_linearReg(model_me))
 })
