@@ -49,5 +49,3 @@ test_that("dimension check", {
   X = matrix(c(1.2,2.2,3.4,2.3,3.5,4.4),2,3)
   expect_equal(show_condition(linearReg(Y, X)),"error")
 })
-
-test_that("")
