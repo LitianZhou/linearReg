@@ -6,7 +6,8 @@ test_that("F_statistic equal", {
   model_lm = lm(Y~X1+X2)
   X= cbind(X1,X2)
   model_me = linearReg(Y,X)
-  expect_equal(unname(summary(model_lm)$fstatistic[1]), summary_linearReg(model_me))
+  conclusion = summary_linearReg(model_me)
+  expect_equal("X values are significantly associated with Y (p < 0.05)", summary_linearReg(model_me))
 })
 
 test_that("when sample size smaller or equal to 7", {
@@ -14,5 +15,6 @@ test_that("when sample size smaller or equal to 7", {
   X = Y+rnorm(7,sd=3)
   model_lm = lm(Y~X)
   model_me = linearReg(Y,X)
-  expect_equal(unname(summary(model_lm)$fstatistic[1]), summary_linearReg(model_me))
+  conclusion = summary_linearReg(model_me)
+  expect_equal("X values are NOT significantly associated with Y (p > 0.05)", summary_linearReg(model_me))
 })

@@ -111,9 +111,8 @@ summary_linearReg = function(lm) {
   }else {
     cat(sprintf("\nF-statistic: %.6f on %d and %d DF, p-value: %f", lm$F_statistic, (lm$q-1),(lm$n-lm$q),lm$pf_value))
   }
-  cat("\nReturn the F_statistic.")
-  return(lm$F_statistic)
+  if(lm$pf_value <= 0.05) return("X values are significantly associated with Y (p < 0.05)")
+  else {
+    return("X values are NOT significantly associated with Y (p > 0.05)")
+  }
 }
-
-# mm = bench::mark(unname(lm(Y~X1+X2)$coefficients), unname(linearReg(Y,X)$coefficients))
-# plot(mm)
