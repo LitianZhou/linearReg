@@ -14,5 +14,5 @@ test_that("when sample size smaller or equal to 7", {
   X = Y+rnorm(7,sd=3)
   model_lm = lm(Y~X)
   model_me = linearReg(Y,X)
-  expect_equal(unname(model_lm$coefficients), unname(model_me$coefficients))
+  expect_equal(unname(summary(model_lm)$fstatistic[1]), summary_linearReg(model_me))
 })
