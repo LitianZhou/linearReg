@@ -16,8 +16,8 @@ test_that("coefficients are the same as lm", {
 })
 
 test_that("if X is a vector, transform to matrix", {
-  Y = rnorm(8)
-  X = Y+rnorm(8,sd=0.3)
+  Y = rnorm(7)
+  X = Y+rnorm(7,sd=3)
   model_lm = lm(Y~X)
   model_me = linearReg(Y,X)
   expect_equal(unname(model_lm$coefficients), unname(model_me$coefficients))

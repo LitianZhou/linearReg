@@ -9,6 +9,9 @@ summary_linearReg(lm)
 \arguments{
 \item{lm}{The object returned by the function linearReg.}
 }
+\value{
+F-statistic of the fitted model
+}
 \description{
 This function print the attributes of the linear regression model, including coefficents, and their
 stand error, t statistics and p values. As for the model, it will print out the residual standard error

@@ -85,7 +85,7 @@ linearReg = function(Y, X, has_intercept = TRUE) {
 #'
 #'@param lm The object returned by the function linearReg.
 #'
-#'@value F-statistic of the fitted model
+#'@return F-statistic of the fitted model
 #'@export
 summary_linearReg = function(lm) {
   cat("Call:\nlinearReg(Y = X*beta)\n")
@@ -109,8 +109,9 @@ summary_linearReg = function(lm) {
   if(lm$pf_value < 2.2e-16) {
     cat(sprintf("\nF-statistic: %.0f on %d and %d DF, p-value: < 2.2e-16", lm$F_statistic, (lm$q-1),(lm$n-lm$q)))
   }else {
-    cat(sprintf("\nF-statistic: %.0f on %d and %d DF, p-value: %f", lm$F_statistic, (lm$q-1),(lm$n-lm$q),lm$pf_value))
+    cat(sprintf("\nF-statistic: %.6f on %d and %d DF, p-value: %f", lm$F_statistic, (lm$q-1),(lm$n-lm$q),lm$pf_value))
   }
+  cat("\nReturn the F_statistic.")
   return(lm$F_statistic)
 }
 
