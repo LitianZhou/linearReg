@@ -7,6 +7,12 @@ test_that("coefficients are the same as lm", {
   X= cbind(X1,X2)
   model_me = linearReg(Y,X)
   expect_equal(unname(model_lm$coefficients), unname(model_me$coefficients))
+
+  Y = matrix(c(2,3,4,5),4,1)
+  X = matrix(c(1.1,2.2,3.3,4.5),4,1)
+  model_lm = lm(Y~X)
+  model_me = linearReg(Y,X)
+  expect_equal(unname(model_lm$coefficients), unname(model_me$coefficients))
 })
 
 test_that("if X is a vector, transform to matrix", {

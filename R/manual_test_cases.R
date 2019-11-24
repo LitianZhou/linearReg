@@ -3,7 +3,7 @@
 Y = matrix(c(2,3,4,5),4,1)
 X = matrix(c(1.1,2.2,3.3,4.5),4,1)
 # vector input
-Y = rnorm(8)
+Y = rnorm(6)
 X = Y+rnorm(8,sd=0.3)
 model0 = lm(Y~X)
 summary(model0)
