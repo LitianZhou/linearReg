@@ -30,17 +30,27 @@ X = c(1.1, 2.2, 2.9, 3.9)
 model1 = linearReg(Y,X)
 ```
 
-We can check the result of above SLR model using summary_linearReg():
+We can check the result of above SLR model using `summary_linearReg()`:
 ```{r}
 summary_linearReg(model1)
 ```
 
 ### MLR demo
-We can also use matrices to build a MLR model. Note that the function can not build multi-covariate model, i.e. Y matrix can not have more than 1 colomn. For instance:
+We can also use matrices to build a MLR model. Note that the function can not build multi-covariate model, i.e. Y matrix can not have more than 1 colomn. In such case, the function will stop and print an error message. For instance:
+```{r warning=TRUE}
+set.seed(7)
+X = matrix(rnorm(100), 50, 2)
+Y = matrix((X[,1]+ 3*X[,2] + rnorm(50,sd=2)), 100, 2)
+
+try(linearReg(Y,X))
+```
+
+
+The correct using:
 ```{r MLR demo1}
 set.seed(7)
-X = matrix(rnorm(200), 100, 2)
-Y = matrix((X[,1]+3 * X[,2] + rnorm(200,sd=2)), 100, 1)
+X = matrix(rnorm(100), 50, 2)
+Y = matrix((X[,1]+ 3*X[,2] + rnorm(50,sd=2)), 50, 1)
 
 model1 = linearReg(Y,X)
 ```
@@ -49,7 +59,7 @@ Similarly, we use summary_linearReg to print out the model:
 summary_linearReg(model1)
 ```
 
-If you want to combine predictors from different X matrices, use cbind to combine them into one X matrix first. User are responsible to check each colomn of X are orthogonal. For instance:
+If you want to combine predictors from different X matrices, use `cbind()` to combine them into one X matrix first. User are responsible to check each colomn of X are orthogonal. For instance:
 ```{r MLR demo2}
 set.seed(7)
 X1 = rnorm(100)
@@ -62,6 +72,13 @@ model2 = linearReg(Y,X)
 summary_linearReg(model2)
 ```
 
+### bench mark with original lm function:
+```{r fig1, fig.height = 3, fig.width = 7}
+mm = bench::mark(lm(Y~X1+X2)$coefficients, linearReg(Y,X)$coefficients)
+mm
+plot(mm, sub="")
+```
 
+The simlified `linearReg()` function is around 5 times faster than the original `lm()` function.
 
 
