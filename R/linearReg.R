@@ -27,6 +27,7 @@ linearReg = function(Y, X, has_intercept = TRUE) {
     Y = Y[-unique(which(is.na(X),arr.ind = TRUE)[1]),, drop=FALSE]
     X = X[-unique(which(is.na(X),arr.ind = TRUE)[1]),, drop=FALSE]
   }
+
   # dimension check
   if(nrow(Y) != nrow(X)) {
     stop("Number of the outcomes and observations do not match.")
@@ -67,7 +68,10 @@ linearReg = function(Y, X, has_intercept = TRUE) {
   F_statistic = SSR/(q-1)/MSE
   pf_value = pf(F_statistic, (q-1), (n-q), lower.tail = FALSE)
 
-  return(list(coefficients = beta[,,drop=TRUE], n=n, q=q, residuals=residuals,
+  beta = beta[,,drop=TRUE]
+  names(beta)[1] = ("(Intercept)")
+
+  return(list(coefficients = beta, n=n, q=q, residuals=residuals,
               SSE=SSE, SSR=SSR,SSY=SSY, MSE=MSE, R_sq=R_sq, Adj_R_sq=Adj_R_sq,
               variance_mat=variance_mat, std.error=std.error, t_statistic=t_statistic, pt_value=pt_value,
               F_statistic=F_statistic, pf_value=pf_value))
@@ -81,6 +85,7 @@ linearReg = function(Y, X, has_intercept = TRUE) {
 #'
 #'@param lm The object returned by the function linearReg.
 #'
+#'@value F-statistic of the fitted model
 #'@export
 summary_linearReg = function(lm) {
   cat("Call:\nlinearReg(Y = X*beta)\n")
@@ -108,3 +113,6 @@ summary_linearReg = function(lm) {
   }
   return(lm$F_statistic)
 }
+
+# mm = bench::mark(unname(lm(Y~X1+X2)$coefficients), unname(linearReg(Y,X)$coefficients))
+# plot(mm)
