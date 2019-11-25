@@ -12,7 +12,9 @@ LazyData: true
 RoxygenNote: 6.1.1
 Depends: 
     stats,
-    bench
+    bench,
+    tidyr,
+    ggplot2
 Suggests: 
     knitr,
     rmarkdown,
