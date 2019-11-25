@@ -22,8 +22,8 @@ devtools::install_github("LitianZhou/linearReg")
 ```r
 library(linearReg)
 
-load("data/Y.Rdata")
-load("data/X.Rdata")
+load("data/Y.rda")
+load("data/X.rda")
 model = linearReg(Y, X)
 summary_linearReg(model)
 #>  Call:
