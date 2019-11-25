@@ -107,9 +107,9 @@ summary_linearReg = function(lm) {
   cat(sprintf("\nResidual standard error: %.5f on %d degrees of freedom", sqrt(lm$SSE), (lm$n-lm$q)))
   cat(sprintf("\nMultiple R-squared: %.4f,\tAdjusted R-squared: %.4f",lm$R_sq,lm$Adj_R_sq))
   if(lm$pf_value < 2.2e-16) {
-    cat(sprintf("\nF-statistic: %.0f on %d and %d DF, p-value: < 2.2e-16", lm$F_statistic, (lm$q-1),(lm$n-lm$q)))
+    cat(sprintf("\nF-statistic: %.0f on %d and %d DF, p-value: < 2.2e-16", lm$F_statistic, (lm$q-1),(lm$n-lm$q)), "\n")
   }else {
-    cat(sprintf("\nF-statistic: %.6f on %d and %d DF, p-value: %f", lm$F_statistic, (lm$q-1),(lm$n-lm$q),lm$pf_value))
+    cat(sprintf("\nF-statistic: %.6f on %d and %d DF, p-value: %f", lm$F_statistic, (lm$q-1),(lm$n-lm$q),lm$pf_value), "\n")
   }
   if(lm$pf_value <= 0.05) return("X values are significantly associated with Y (p < 0.05)")
   else {
