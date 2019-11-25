@@ -9,7 +9,9 @@
 #'
 #'@return A list of attributes of the linear model.
 #'
+#'
 #'@export
+#'
 linearReg = function(Y, X, has_intercept = TRUE) {
   # convert vector to matrix
   if(is.null(attributes(Y))) {
@@ -86,7 +88,9 @@ linearReg = function(Y, X, has_intercept = TRUE) {
 #'@param lm The object returned by the function linearReg.
 #'
 #'@return F-statistic of the fitted model
+#'
 #'@export
+#'
 summary_linearReg = function(lm) {
   cat("Call:\nlinearReg(Y = X*beta)\n")
   cat("\nResiduals:\n")
