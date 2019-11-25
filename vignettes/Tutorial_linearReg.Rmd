@@ -76,7 +76,7 @@ summary_linearReg(model2)
 ```{r fig1, fig.height = 3, fig.width = 7}
 mm = bench::mark(lm(Y~X1+X2)$coefficients, linearReg(Y,X)$coefficients)
 mm
-plot(mm, sub="")
+plot(mm)
 ```
 
 The simlified `linearReg()` function is around 5 times faster than the original `lm()` function.
