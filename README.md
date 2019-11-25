@@ -14,10 +14,10 @@ It currently has two functions:
 
 ## Installation
 ```r
-#install useing devtools from GitHub website:
+# install useing devtools from GitHub website:
 devtools::install_github("LitianZhou/linearReg")
 
-# OR
+# if you want to browse vignitte, install with:
 devtools::install_github("LitianZhou/linearReg", build_vignettes = T)
 ```
 
