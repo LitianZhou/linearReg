@@ -9,8 +9,6 @@ Description: as title
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: 
-    Rcpp (>= 1.0.2)
 RoxygenNote: 6.1.1
 Depends: 
     stats,
