@@ -16,6 +16,9 @@ It currently has two functions:
 ```r
 #install useing devtools from GitHub website:
 devtools::install_github("LitianZhou/linearReg")
+
+# OR
+devtools::install_github("LitianZhou/linearReg", build_vignettes = T)
 ```
 
 ## Use
