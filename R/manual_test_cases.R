@@ -22,6 +22,3 @@ model2_me = linearReg(Y,X)
 #test3, MLR with NAs
 #test4, SLR with one categorical predictor
 #test5, MLR with one categorical predictor
-
-#save(X, file = "X.Rdata")
-#save(Y, file = "Y.Rdata")

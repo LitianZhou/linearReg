@@ -22,9 +22,17 @@ devtools::install_github("LitianZhou/linearReg")
 ```r
 library(linearReg)
 
-load("data/Y.rda")
-load("data/X.rda")
-model = linearReg(Y, X)
+# create test data:
+set.seed(7)
+X1 = rnorm(100)
+X2 = rnorm(100)
+Y = X1+ 3*X2 + rnorm(100,sd=2)
+X= cbind(X1,X2)
+
+# fit linear model:
+model = linearReg(Y,X)
+
+# check the results:
 summary_linearReg(model)
 #>  Call:
 #>  linearReg(Y = X*beta)
